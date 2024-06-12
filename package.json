@@ -9,9 +9,11 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "ejs-mate": "^4.0.0",
     "express": "^4.19.2",
     "express-async-errors": "^3.1.1",
+    "lodash": "^4.17.21",
     "mongodb": "^6.7.0",
     "mongoose": "^8.4.1",
     "winston": "^3.13.0",
