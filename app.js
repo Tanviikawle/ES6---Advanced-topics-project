@@ -9,9 +9,9 @@ const mongoose = require('mongoose');
 const containsObj = require('./utils/containsObj');
 const _ = require('lodash');
 const hashing = require('./utils/hash')
+const User = require('./models/users')
 
 const app = express();
-const users =[];
 
 app.use(express.urlencoded({extended:true}));
 
@@ -59,14 +59,9 @@ app.get('/',catchAsync(async (req,res,next)=>{
 
 app.post('/',catchAsync(async(req,res)=>{
     const {username , password} = req.body;
-    console.log(password)
-    let user = {
-        username: username,
-        password: await hashing(password)
-    }
-    users.push(user);
-    // console.log(_.pick(user,['username']))
-    console.log(users);
+    let pass = await hashing(password);
+    let user = new User({username});
+    const registeredUser = await User.register(user,pass);;
     res.redirect('/');
 }))
 
